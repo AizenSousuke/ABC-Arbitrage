@@ -8,9 +8,9 @@ Complete this document with your answers.
 
 ----
 
-### Candidate Name: 
+### Candidate Name: PUTERA NIK DIMAS
 
-### Date:
+### Date: 03/03/24
 
 -----
 

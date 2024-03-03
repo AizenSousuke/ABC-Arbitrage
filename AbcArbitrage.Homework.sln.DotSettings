@@ -2,6 +2,7 @@
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright (C) Abc Arbitrage Asset Management - All Rights Reserved&#xD;
 Unauthorized copying of this file, via any medium is strictly prohibited&#xD;
 Proprietary and confidential&#xD;
-Written by $USER_NAME$ &lt;$USER_LOGIN$@abc-arbitrage.com&gt;, $CURRENT_YEAR$-$CURRENT_MONTH$-$CURRENT_DAY$</s:String>
+Written by ${User.Name} &lt;${User.FullName}@abc-arbitrage.com&gt;, ${CurrentDate.Year}-${CurrentDate.Month}-${CurrentDate.Day}</s:String>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EFeature_002EServices_002ECodeCleanup_002EFileHeader_002EFileHeaderSettingsMigrate/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Coanet/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Delisted/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

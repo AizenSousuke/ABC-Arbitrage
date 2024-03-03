@@ -4,31 +4,43 @@
 // Written by Olivier Coanet <o.coanet@abc-arbitrage.com>, 2020-10-01
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AbcArbitrage.Homework.Routing
 {
     public class SubscriptionIndex : ISubscriptionIndex
     {
+        private List<Subscription> _subscriptions = new();
+
         public void AddSubscriptions(IEnumerable<Subscription> subscriptions)
         {
-            // TODO
+            _subscriptions.AddRange(subscriptions);
         }
 
         public void RemoveSubscriptions(IEnumerable<Subscription> subscriptions)
         {
-            // TODO
+            foreach (var subscription in subscriptions)
+            {
+                _subscriptions.Remove(subscription);
+            }
         }
 
         public void RemoveSubscriptionsForConsumer(ClientId consumer)
         {
-            // TODO
+            _subscriptions.RemoveAll(src => src.ConsumerId.Equals(consumer));
         }
 
-        public IEnumerable<Subscription> FindSubscriptions(MessageTypeId messageTypeId, MessageRoutingContent routingContent)
+        public IEnumerable<Subscription> FindSubscriptions(MessageTypeId messageTypeId,
+            MessageRoutingContent routingContent)
         {
-            // TODO
+            var subscriptions = _subscriptions
+                .Where(subscription => subscription.MessageTypeId.Equals(messageTypeId) &&
+                                       (routingContent.Parts == null ||
+                                        routingContent.Parts.All(part =>
+                                            subscription.ContentPattern.ToString().Equals(part.ToString()))));
 
-            yield break;
+
+            return subscriptions;
         }
     }
 }
