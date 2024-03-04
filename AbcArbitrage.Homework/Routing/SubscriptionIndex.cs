@@ -34,11 +34,10 @@ namespace AbcArbitrage.Homework.Routing
             MessageRoutingContent routingContent)
         {
             var subscriptions = _subscriptions
-                .Where(subscription => subscription.MessageTypeId.Equals(messageTypeId) &&
+                .Where(subscription => subscription.MessageTypeId.Equals(messageTypeId) &
                                        (routingContent.Parts == null ||
-                                        routingContent.Parts.All(part =>
-                                            subscription.ContentPattern.ToString().Equals(part.ToString()))));
-
+                                        routingContent.Parts.Any(part =>
+                                            subscription.ContentPattern.Parts.Any(cpPart => cpPart == part))));
 
             return subscriptions;
         }
