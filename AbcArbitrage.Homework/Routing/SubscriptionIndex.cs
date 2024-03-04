@@ -36,8 +36,16 @@ namespace AbcArbitrage.Homework.Routing
             var subscriptions = _subscriptions
                 .Where(subscription => subscription.MessageTypeId.Equals(messageTypeId) &
                                        (routingContent.Parts == null ||
-                                        routingContent.Parts.Any(part =>
-                                            subscription.ContentPattern.Parts.Any(cpPart => cpPart == part))));
+                                        subscription.ContentPattern.Parts.Any(part =>
+                                            routingContent.Parts.Any(routingContentParts =>
+                                                routingContentParts == "*" || routingContentParts == part ||
+                                                ContentPattern.Split(routingContentParts)
+                                                    .Parts
+                                                    .Contains(part)
+                                            )
+                                        )
+                                       )
+                );
 
             return subscriptions;
         }
